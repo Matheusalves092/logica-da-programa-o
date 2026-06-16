@@ -1,0 +1,3 @@
+Uma branch (ramificação) é uma linha de desenvolvimento separada dentro de um sistema de controle de versão, como o Git. Ela funciona como uma cópia independente do projeto, permitindo que desenvolvedores façam alterações sem afetar o código principal.
+
+Imagine uma árvore: o tronco representa a versão principal do projeto (geralmente chamada de main ou master) e os galhos representam as branches. Cada galho pode crescer e receber mudanças próprias sem interferir nos demais.

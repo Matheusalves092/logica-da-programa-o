@@ -1,0 +1,39 @@
+3;programa
+
+{
+
+	funcao inicio()
+
+	{
+
+		cadeia senha
+
+		cadeia senhaCorreta = "leleobubbaloo"
+
+
+
+		escreva("Digite a senha: ")
+
+		leia(senha)
+
+
+
+		enquanto(senha != senhaCorreta)
+
+		{
+
+			escreva("Senha incorreta, tente novamente.\n")
+
+			escreva("digite a senha: ")
+
+			leia(senha)
+
+		}
+
+
+
+		escreva("acesso liberado, bem vindo")
+
+	}
+
+}

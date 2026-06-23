@@ -1,0 +1,231 @@
+programa
+{
+	funcao inicio()
+	{
+		inteiro vidajogador = 100
+		inteiro vidamonstro = 150
+		inteiro energia = 50
+		inteiro danodragao = 20
+		inteiro defesaextra = 0
+
+		inteiro pocaovida = 2
+		inteiro pocaoenergia = 1
+		inteiro ataqueespecial = 1
+		inteiro ativaescudo = 1
+
+		inteiro opcao
+		inteiro item
+		inteiro danorecebido
+
+		escreva("=================================\n")
+		escreva("         A BATALHA FINAL\n")
+		escreva("=================================\n")
+
+		enquanto (vidajogador > 0 e vidamonstro > 0)
+		{
+			escreva("\n---------------------------------\n")
+			escreva("Sua vida: ", vidajogador, "\n")
+			escreva("Sua energia: ", energia, "\n")
+			escreva("Vida do monstro: ", vidamonstro, "\n")
+
+			escreva("\nItens disponíveis:\n")
+			escreva("Poções de vida: ", pocaovida, "\n")
+			escreva("Poções de energia: ", pocaoenergia, "\n")
+			escreva("Ataques especiais: ", ataqueespecial, "\n")
+			escreva("Escudos: ", ativaescudo, "\n")
+
+			escreva("\n1 - Atacar\n")
+			escreva("2 - Preparar defesa\n")
+			escreva("3 - Usar item especial\n")
+			escreva("Escolha: ")
+			leia(opcao)
+
+			se (opcao == 1)
+			{
+				se (energia >= 10)
+				{
+					vidamonstro = vidamonstro - 25
+					energia = energia - 10
+
+					se (vidamonstro < 0)
+					{
+						vidamonstro = 0
+					}
+
+					escreva("\nVocê causou 25 de dano!\n")
+				}
+				senao
+				{
+					escreva("\nEnergia insuficiente!\n")
+				}
+			}
+			senao
+			{
+				se (opcao == 2)
+				{
+					energia = energia + 10
+
+					se (energia > 50)
+					{
+						energia = 50
+					}
+
+					defesaextra = 10
+
+					escreva("\nVocê se preparou para o próximo ataque!\n")
+				}
+				senao
+				{
+					se (opcao == 3)
+					{
+						escreva("\n=== ITENS ===\n")
+						escreva("1 - Poção de Vida (", pocaovida, ")\n")
+						escreva("2 - Poção de Energia (", pocaoenergia, ")\n")
+						escreva("3 - Ataque Especial (", ataqueespecial, ")\n")
+						escreva("4 - Escudo (", ativaescudo, ")\n")
+						escreva("Escolha o item: ")
+						leia(item)
+
+						se (item == 1)
+						{
+							se (pocaovida > 0)
+							{
+								vidajogador = vidajogador + 50
+
+								se (vidajogador > 100)
+								{
+									vidajogador = 100
+								}
+
+								pocaovida = pocaovida - 1
+
+								escreva("Você recuperou 50 de vida!\n")
+							}
+							senao
+							{
+								escreva("Poções de vida esgotadas!\n")
+							}
+						}
+						senao
+						{
+							se (item == 2)
+							{
+								se (pocaoenergia > 0)
+								{
+									energia = energia + 20
+
+									se (energia > 50)
+									{
+										energia = 50
+									}
+
+									pocaoenergia = pocaoenergia - 1
+
+									escreva("Você recuperou 20 de energia!\n")
+								}
+								senao
+								{
+									escreva("Poções de energia esgotadas!\n")
+								}
+							}
+							senao
+							{
+								se (item == 3)
+								{
+									se (ataqueespecial > 0)
+									{
+										vidamonstro = vidamonstro - 50
+
+										se (vidamonstro < 0)
+										{
+											vidamonstro = 0
+										}
+
+										ataqueespecial = ataqueespecial - 1
+
+										escreva("Ataque especial usado!\n")
+										escreva("Você causou 50 de dano!\n")
+									}
+									senao
+									{
+										escreva("Ataque especial esgotado!\n")
+									}
+								}
+								senao
+								{
+									se (item == 4)
+									{
+										se (ativaescudo > 0)
+										{
+											defesaextra = 20
+											ativaescudo = ativaescudo - 1
+
+											escreva("Escudo ativado!\n")
+										}
+										senao
+										{
+											escreva("Sem escudos disponíveis!\n")
+										}
+									}
+								}
+							}
+						}
+					}
+					senao
+					{
+						escreva("Opção inválida!\n")
+					}
+				}
+			}
+
+			se (vidamonstro > 0)
+			{
+				danorecebido = danodragao - defesaextra
+
+				se (danorecebido < 0)
+				{
+					danorecebido = 0
+				}
+
+				vidajogador = vidajogador - danorecebido
+
+				se (vidajogador < 0)
+				{
+					vidajogador = 0
+				}
+
+				escreva("\nO monstro atacou!\n")
+				escreva("Você recebeu ", danorecebido, " de dano.\n")
+				escreva("Sua vida agora é ", vidajogador, "\n")
+
+				defesaextra = 0
+			}
+		}
+
+		escreva("\n=================================\n")
+
+		se (vidamonstro == 0)
+		{
+			escreva("VITÓRIA!\n")
+			escreva("Você derrotou o monstro lendário!\n")
+		}
+		senao
+		{
+			escreva("GAME OVER\n")
+			escreva("O monstro derrotou você!\n")
+		}
+
+		escreva("=================================\n")
+	}
+}
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 2237; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
